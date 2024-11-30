@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Container(
       child: Image.asset(
-        assetsManager.splashImage,
+        AssetsManager.splashImage,
         fit: BoxFit.fill,
       ),
     );

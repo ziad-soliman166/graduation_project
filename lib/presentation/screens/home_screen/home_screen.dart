@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project_primary/core/assets_manager.dart';
+import 'package:graduation_project_primary/core/routes_manager.dart';
 
 import '../../../core/color_manager.dart';
 
@@ -17,8 +19,8 @@ class HomeScreen extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  colorManager.lightBackgroundColor, // Lighter at the top
-                  colorManager.darkBackgroundColor, // Darker at the bottom
+                  ColorsManager.lightBackgroundColor,
+                  ColorsManager.darkBackgroundColor,
                 ],
               ),
             ),
@@ -26,7 +28,7 @@ class HomeScreen extends StatelessWidget {
 
           // Circular Image and DNA-like image layered
           Positioned(
-            top: 150, // Adjust top positioning
+            top: 150,
             left: 0,
             right: 0,
             child: Stack(
@@ -40,44 +42,35 @@ class HomeScreen extends StatelessWidget {
                 ),
                 // DNA-like Image (Full Width)
                 Image.asset(
-                  'assets/images/gen.png', // Assuming this is the DNA image
-                  width: MediaQuery.of(context).size.width, // Full width
+                  'assets/images/gen.png',
+                  width: MediaQuery.of(context).size.width,
                   fit: BoxFit.contain,
                 ),
               ],
             ),
           ),
 
-          // "GlucoCare Monitor" Text
-          const Positioned(
-            top: 100, // Adjust top positioning
-            left: 100,
-            right: 0,
+          Positioned(
+            top: 100,
+            right: 20,
             child: Column(
-              children: const [
-                Text(
-                  'GlucoCare',
-                  style: TextStyle(
-                    fontSize: 40,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Image.asset(
+                  AssetsManager.glucoCareText,
+                  //width: 160,
                 ),
-                Text(
-                  'Monitor',
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w400,
-                  ),
+                const SizedBox(height: 10),
+                Image.asset(
+                  AssetsManager.monitorText,
+                  //width: 150,
                 ),
               ],
             ),
           ),
 
-          // Sign In and Sign Up Buttons
           Positioned(
-            bottom: 120, // Adjust bottom positioning
+            bottom: 120,
             left: 0,
             right: 0,
             child: Row(
@@ -85,7 +78,9 @@ class HomeScreen extends StatelessWidget {
               children: [
                 // Sign In Button
                 ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, routesManager.signInScreen);
+                  },
                   icon: const Icon(Icons.arrow_forward),
                   label: const Text("Sign In"),
                   style: ElevatedButton.styleFrom(
@@ -101,7 +96,9 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(width: 20),
                 // Sign Up Button
                 ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, routesManager.signUpScreen);
+                  },
                   icon: const Icon(Icons.arrow_upward),
                   label: const Text("Sign Up"),
                   style: ElevatedButton.styleFrom(
@@ -120,7 +117,7 @@ class HomeScreen extends StatelessWidget {
 
           // Language Button
           Positioned(
-            bottom: 50, // Adjust bottom positioning
+            bottom: 50,
             left: 0,
             right: 0,
             child: Center(
